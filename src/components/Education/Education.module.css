@@ -1,0 +1,191 @@
+/* Education.module.css — Premium, not resume-dump */
+.education { background: var(--bg-surface); }
+
+/* ── Top: main card with gradient accent ── */
+.mainCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin-bottom: var(--s5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cardTop {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s5);
+  padding: var(--s6);
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+/* Accent bar on left edge */
+.accentBar {
+  position: relative;
+  padding-left: var(--s5);
+}
+.accentBar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--cyan), var(--violet));
+  border-radius: 2px;
+}
+
+.degreeLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--s2);
+}
+
+.degree {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  color: var(--text-1);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.field {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 600;
+  color: var(--cyan);
+  margin-bottom: var(--s3);
+}
+
+.institution {
+  font-size: 15px;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+
+.affiliation {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+/* SGPA badge — right side of card top */
+.sgpaBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cyan-glow);
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--r-lg);
+  padding: var(--s4) var(--s5);
+  min-width: 110px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sgpaValue {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.sgpaLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.sgpaNote {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Highlight stat strip */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: var(--s4) var(--s6);
+}
+
+.hlItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--s3);
+  border-right: 1px solid var(--border);
+}
+.hlItem:last-child { border-right: none; }
+
+.hlIcon { font-size: 18px; margin-bottom: 4px; }
+.hlValue { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 3px; }
+.hlLabel { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.07em; }
+
+/* ── Coursework grid ── */
+.sectionLabel2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--s4);
+  opacity: 0.85;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s3);
+}
+
+.courseCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  transition: border-color var(--dur-mid) var(--ease-out),
+              transform var(--dur-mid) var(--ease-out);
+  cursor: default;
+}
+.courseCard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.courseIcon { font-size: 20px; }
+.courseName {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+.courseRelevance { font-size: 11px; color: var(--text-2); line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .cardTop { grid-template-columns: 1fr; }
+  .sgpaBadge { flex-direction: row; gap: var(--s3); min-width: auto; width: fit-content; }
+  .highlights { grid-template-columns: repeat(2, 1fr); }
+  .hlItem:nth-child(2) { border-right: none; }
+  .courseGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .courseGrid { grid-template-columns: 1fr; }
+  .highlights { grid-template-columns: repeat(2, 1fr); }
+}

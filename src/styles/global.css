@@ -1,0 +1,348 @@
+/* ============================================================
+   GLOBAL CSS — Vanshika Agrawal Portfolio
+   Design System: Dark & Techy · Cyan-Violet Accents
+   Fonts: Syne (display) · DM Sans (body) · Fira Code (mono)
+   ============================================================ */
+
+/* ---------- CSS CUSTOM PROPERTIES (Design Tokens) ---------- */
+:root {
+  /* Backgrounds */
+  --bg-base:    #070B14;
+  --bg-surface: #0C1220;
+  --bg-card:    #111827;
+  --bg-glass:   rgba(255, 255, 255, 0.04);
+
+  /* Borders */
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(0, 212, 255, 0.35);
+  --border-cyan:  rgba(0, 212, 255, 0.2);
+  --border-violet:rgba(124, 58, 237, 0.25);
+
+  /* Accent Colors */
+  --cyan:         #00D4FF;
+  --cyan-dim:     rgba(0, 212, 255, 0.12);
+  --cyan-glow:    rgba(0, 212, 255, 0.06);
+  --violet:       #7C3AED;
+  --violet-dim:   rgba(124, 58, 237, 0.12);
+  --amber:        #F59E0B;
+  --amber-dim:    rgba(245, 158, 11, 0.12);
+  --emerald:      #10B981;
+  --emerald-dim:  rgba(16, 185, 129, 0.12);
+  --red:          #EF4444;
+
+  /* Text */
+  --text-1: #E8EDF5;   /* Primary headings and body */
+  --text-2: #8892A4;   /* Subtitles, descriptions */
+  --text-3: #4A5568;   /* Captions, timestamps */
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'Fira Code', monospace;
+
+  /* Spacing Scale (8px base) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+  --s10: 128px;
+
+  /* Border Radii */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+
+  /* Transitions */
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    0.18s;
+  --dur-mid:     0.28s;
+  --dur-slow:    0.5s;
+
+  /* Layout */
+  --max-w: 1200px;
+  --nav-h: 64px;
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-1);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Remove default list styles */
+ul, ol { list-style: none; }
+
+/* Better image defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Prevent text overflow */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* ---------- SCROLLBAR STYLING ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+/* ---------- SELECTION ---------- */
+::selection {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--s5);
+}
+
+/* Section label — monospace tag above every section heading */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  margin-bottom: var(--s3);
+  opacity: 0.85;
+}
+
+/* Section heading */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.2;
+  margin-bottom: var(--s3);
+}
+
+/* Section subheading */
+.section-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: var(--text-2);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: var(--s7);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--dur-mid) var(--ease-out),
+              transform var(--dur-mid) var(--ease-out);
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+/* Cyan featured glass card */
+.glass-card-featured {
+  background: var(--cyan-glow);
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section wrapper with standard padding */
+.section-wrapper {
+  padding: var(--s9) 0;
+}
+
+/* Alternate section bg */
+.section-alt {
+  background: var(--bg-surface);
+}
+
+/* ---------- SCROLL REVEAL ANIMATION ----------
+   Elements get .reveal class added by JS.
+   When .visible is added, they animate in.
+   ------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children — used in grids */
+.reveal-grid > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal-grid.visible > *:nth-child(1) { transition-delay: 0.0s; opacity: 1; transform: none; }
+.reveal-grid.visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: none; }
+.reveal-grid.visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: none; }
+.reveal-grid.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: none; }
+.reveal-grid.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: none; }
+.reveal-grid.visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: none; }
+
+/* ---------- RESPONSIVE UTILITIES ---------- */
+@media (max-width: 768px) {
+  .container { padding: 0 var(--s4); }
+  .section-wrapper { padding: var(--s7) 0; }
+  .section-sub { margin-bottom: var(--s5); }
+}
+
+/* ============================================================
+   UX UPGRADE PATCH — Accessibility, focus, scroll performance
+   ============================================================ */
+
+/* ── 1. Global focus-visible baseline ──
+   Browsers show focus rings on click; we only want them for keyboard.
+   outline:none kills them entirely — :focus-visible is the correct approach. */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── 2. Skip-to-content (defined in Navbar.module.css) ──
+   This rule ensures it's above everything including modals. */
+
+/* ── 3. Smooth scroll — only if user hasn't opted out ── */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Respect reduced motion for all transitions site-wide */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Re-allow opacity transitions (fade in/out is safe) */
+  .reveal, .reveal-grid > * {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+}
+
+/* ── 4. Scroll-anchoring: prevents layout jumps when content above loads ── */
+html { overflow-anchor: auto; }
+
+/* ── 5. Contain paint on cards to reduce repaint regions ── */
+.glass-card, .glass-card-featured {
+  contain: layout style;
+}
+
+/* ── 6. will-change hints for GPU-composited layers ──
+   Only applied to elements that actively animate. */
+.reveal {
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  will-change: auto; /* release hint after animation completes */
+}
+
+/* ── 7. Screen reader only utility (global version) ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── 8. High-contrast mode support ── */
+@media (forced-colors: active) {
+  .glass-card, .glass-card-featured {
+    border: 1px solid ButtonText;
+  }
+  /* Gradient text falls back to ButtonText in forced-colors */
+  .gradient-text {
+    -webkit-text-fill-color: ButtonText;
+    background: none;
+  }
+}
+
+/* ── 9. Section transition smoothness ──
+   Prevents flash of white between sections on scroll. */
+.section-wrapper {
+  isolation: isolate;       /* new stacking context; avoids z-index bleed */
+  content-visibility: auto; /* browser can skip rendering off-screen sections */
+  contain-intrinsic-size: 0 600px; /* estimated height for layout reservation */
+}
+
+/* ── 10. Mobile tap targets ──
+   All interactive elements must be at minimum 44×44px (WCAG 2.5.5). */
+button, a, [role="tab"], [role="button"] {
+  min-height: 44px;
+  /* Note: padding is set per-component; this only guarantees the floor */
+}
+
+/* ── 11. Touch scroll performance ── */
+.section-wrapper {
+  -webkit-overflow-scrolling: touch;
+}

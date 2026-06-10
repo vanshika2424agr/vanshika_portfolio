@@ -1,0 +1,190 @@
+/* ============================================================
+   Contact.jsx
+   Contact section with:
+   - Info cards (email, LinkedIn, GitHub, location)
+   - Availability badge with pulsing dot
+   - Contact form with validation and success state
+   ============================================================ */
+
+import React, { useState } from 'react';
+import styles from './Contact.module.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { personal } from '../../data';
+
+const INFO_CARDS = [
+  { icon: '✉️', label: 'Email',    value: personal.email,    href: `mailto:${personal.email}` },
+  { icon: '💼', label: 'LinkedIn', value: personal.linkedin, href: `https://${personal.linkedin}` },
+  { icon: '⬡',  label: 'GitHub',   value: personal.github,  href: `https://${personal.github}` },
+  { icon: '📍', label: 'Location', value: personal.location, href: null },
+];
+
+export default function Contact() {
+  const headRef  = useScrollReveal();
+  const leftRef  = useScrollReveal(0.1);
+  const rightRef = useScrollReveal(0.1);
+
+  /* Form state */
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [sending, setSending]   = useState(false);
+  const [success, setSuccess]   = useState(false);
+  const [error, setError]       = useState('');
+
+  function handleChange(e) {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+    setError('');
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Basic validation
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(form.email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    setSending(true);
+
+    /*
+      ↓ Replace this block with your actual form submission logic.
+        Options: EmailJS, Formspree, Netlify Forms, or your own API.
+        For now, we simulate a 1.5s network delay.
+    */
+    await new Promise(r => setTimeout(r, 1500));
+
+    setSending(false);
+    setSuccess(true);
+    setForm({ name: '', email: '', subject: '', message: '' });
+  }
+
+  return (
+    <section id="contact" className={`section-wrapper ${styles.contact}`}>
+      <div className="container">
+        <div ref={headRef} className="reveal">
+          <p className="section-label">// 07_contact</p>
+          <h2 className="section-title">Let's Build Something Together</h2>
+          <p className="section-sub">
+            Open to internships, collaborations, and full-time opportunities (2026 batch).
+          </p>
+        </div>
+
+        <div className={styles.grid}>
+
+          {/* Left: Info cards + availability badge */}
+          <div ref={leftRef} className="reveal">
+            <div className={styles.infoCards}>
+              {INFO_CARDS.map(card => {
+                const Tag = card.href ? 'a' : 'div';
+                const linkProps = card.href
+                  ? { href: card.href, target: '_blank', rel: 'noopener noreferrer' }
+                  : {};
+
+                return (
+                  <Tag key={card.label} className={styles.infoCard} {...linkProps}>
+                    <div className={styles.infoIcon}>{card.icon}</div>
+                    <div>
+                      <div className={styles.infoLabel}>{card.label}</div>
+                      <div className={styles.infoValue}>{card.value}</div>
+                    </div>
+                  </Tag>
+                );
+              })}
+            </div>
+
+            {/* Pulsing availability status badge */}
+            <div className={styles.availBadge}>
+              <span className={styles.availDot} />
+              Open to Work — Internships & Full-time (2026)
+            </div>
+          </div>
+
+          {/* Right: Contact form */}
+          <div ref={rightRef} className="reveal">
+            <div className={styles.formCard}>
+              <div className={styles.formTitle}>Send a Message</div>
+
+              {success ? (
+                <div className={styles.successMsg}>
+                  ✓ &nbsp; Message received! I'll reply within 24 hours.
+                </div>
+              ) : (
+                <form className={styles.form} onSubmit={handleSubmit} noValidate>
+
+                  <div className={styles.formRow}>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Name *</label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Email *</label>
+                      <input
+                        className={styles.input}
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.field}>
+                    <label className={styles.label}>Subject</label>
+                    <input
+                      className={styles.input}
+                      type="text"
+                      name="subject"
+                      placeholder="Internship Opportunity / Collaboration / Just saying hi"
+                      value={form.subject}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className={styles.field}>
+                    <label className={styles.label}>Message *</label>
+                    <textarea
+                      className={styles.textarea}
+                      name="message"
+                      placeholder="Tell me about the role, project, or idea..."
+                      value={form.message}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  {error && (
+                    <p style={{ color: 'var(--red)', fontSize: 13 }}>{error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    disabled={sending}
+                  >
+                    {sending ? 'Sending...' : 'Send Message →'}
+                  </button>
+
+                </form>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

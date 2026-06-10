@@ -1,0 +1,247 @@
+/* ProblemSolving.module.css — Premium stats dashboard */
+
+/* ── Top summary row ── */
+.summaryRow {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--s5);
+  margin-bottom: var(--s5);
+  align-items: start;
+}
+
+/* Donut chart card */
+.donutCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: var(--s6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.donutWrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+}
+
+.donutSvg { transform: rotate(-90deg); }
+
+.donutCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.donutTotal {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.donutSub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 3px;
+}
+
+.donutLegend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendName {
+  font-size: 13px;
+  color: var(--text-2);
+  flex: 1;
+}
+
+.legendCount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.legendPct {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Right side: meta stat cards */
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s3);
+}
+
+.metaCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s4) var(--s5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color var(--dur-mid) var(--ease-out);
+}
+
+.metaCard:hover { border-color: var(--border-hover); }
+
+.metaIcon { font-size: 22px; margin-bottom: 6px; }
+.metaValue {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-1);
+  margin-bottom: 3px;
+  line-height: 1.1;
+}
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+.metaNote { font-size: 12px; color: var(--text-2); line-height: 1.4; }
+
+/* Progress bar per difficulty (inside metaCard) */
+.diffBar { margin-top: var(--s2); }
+.diffBarTrack { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.diffBarFill { height: 100%; border-radius: 2px; transition: width 1.2s var(--ease-out); }
+
+/* ── Topic progress grid ── */
+.topicSection { margin-top: var(--s2); }
+
+.topicLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--s4);
+  opacity: 0.85;
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s3);
+}
+
+.topicCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  transition: border-color var(--dur-mid) var(--ease-out),
+              transform var(--dur-mid) var(--ease-out);
+}
+
+.topicCard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.topicTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topicName {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.topicGlyph { font-size: 14px; }
+
+.topicCount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.topicBar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.topicFill { height: 100%; border-radius: 3px; transition: width 1.4s var(--ease-out) var(--delay, 0s); }
+
+.topicMeta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+}
+
+/* ── Focus badges ── */
+.focusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-top: var(--s5);
+}
+
+.focusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--border-cyan);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+}
+
+@media (max-width: 900px) {
+  .summaryRow { grid-template-columns: 1fr; }
+  .donutCard { flex-direction: row; flex-wrap: wrap; }
+  .metaGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .topicGrid { grid-template-columns: 1fr; }
+  .metaGrid  { grid-template-columns: 1fr; }
+  .donutCard { flex-direction: column; align-items: center; }
+}
