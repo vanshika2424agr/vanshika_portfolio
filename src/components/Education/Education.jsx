@@ -24,17 +24,16 @@ export default function Education() {
         <div ref={cardRef} className="reveal">
           <div className={styles.mainCard}>
 
-            {/* Top: degree info + SGPA badge */}
             <div className={styles.cardTop}>
               <div className={styles.accentBar}>
-                <div className={styles.degreeLabel}>// {education.duration}</div>
+                <div className={styles.degreeLabel}> {education.duration}</div>
                 <div className={styles.degree}>{education.degree}</div>
                 <div className={styles.field}>{education.field}</div>
                 <div className={styles.institution}>{education.institution}</div>
                 <div className={styles.affiliation}>{education.location} · {education.affiliation}</div>
               </div>
 
-              {/* SGPA prominence badge */}
+              
               <div className={styles.sgpaBadge}>
                 <div className={styles.sgpaValue}>{education.sgpa}</div>
                 <div className={styles.sgpaLabel}>SGPA</div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './Contact.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { personal } from '../../data';
+import emailjs from "@emailjs/browser";
 
 const INFO_CARDS = [
   { icon: '✉️', label: 'Email',    value: personal.email,    href: `mailto:${personal.email}` },
@@ -26,28 +27,51 @@ export default function Contact() {
     setError('');
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+async function handleSubmit(e) {
+  e.preventDefault();
 
-    // Basic validation
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setError('Please fill in all required fields.');
-      return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(form.email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-
-    setSending(true);
-
-    await new Promise(r => setTimeout(r, 1500));
-
-    setSending(false);
-    setSuccess(true);
-    setForm({ name: '', email: '', subject: '', message: '' });
+  if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    setError('Please fill in all required fields.');
+    return;
   }
+
+  if (!/\S+@\S+\.\S+/.test(form.email)) {
+    setError('Please enter a valid email address.');
+    return;
+  }
+
+  setSending(true);
+  setError('');
+try {
+  await emailjs.send(
+    "service_lyobdeg",
+    "template_cmurt5s",
+    {
+      from_name: form.name,
+      from_email: form.email,
+      subject: form.subject || "Portfolio Contact Form",
+      message: form.message,
+      time: new Date().toLocaleString(),
+    },
+    "otergs0q92yq8Iy8d"
+  );
+
+  setSuccess(true);
+
+  setForm({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+} catch (err) {
+  console.error(err);
+  setError('Failed to send message. Please try again.');
+}
+
+  setSending(false);
+}
 
   return (
     <section id="contact" className={`section-wrapper ${styles.contact}`}>
@@ -55,7 +79,7 @@ export default function Contact() {
         <div ref={headRef} className="reveal">
           <h2 className="section-title">Let's Build Something Together</h2>
           <p className="section-sub">
-            Open to internships, collaborations, and full-time opportunities (2026 batch).
+            Open to internships, collaborations, and full-time opportunities (2028 batch).
           </p>
         </div>
 
@@ -85,7 +109,7 @@ export default function Contact() {
             {/* Pulsing availability status badge */}
             <div className={styles.availBadge}>
               <span className={styles.availDot} />
-              Open to Work — Internships & Full-time (2026)
+              Open to Work — Internships & Full-time (2028)
             </div>
           </div>
 

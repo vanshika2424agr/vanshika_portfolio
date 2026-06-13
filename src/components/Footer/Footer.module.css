@@ -91,13 +91,13 @@
 .copy {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--text-3);
+  color: white;
 }
 
 .backTop {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-2);
+  color: white;
   background: none;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -107,7 +107,7 @@
 }
 
 .backTop:hover {
-  color: var(--cyan);
+  color: white;
   border-color: var(--border-cyan);
   transform: translateY(-2px);
 }

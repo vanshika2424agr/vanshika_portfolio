@@ -124,6 +124,19 @@ export const experiences = [
       "Bridged the gap between technical requirements and business needs.",
     ],
   },
+  {
+    role: "Generative AI Intern",
+    company: "IBM",
+    fullName: "International Business Machines",
+    duration: "2025",
+    type: "Technical Internship",
+    color: "violet",
+    highlights: [
+      "Developed a structured approach to project execution, documentation, and task prioritization while working in a professional corporate environment.",
+      "Explored emerging technologies, industry best practices, and digital transformation concepts through IBM-led learning initiatives.",
+      "Bridged technical concepts and business requirements, improving the ability to translate user needs into practical technology solutions.",
+    ],
+  },
 ];
 
 // ---------- PROJECTS ----------

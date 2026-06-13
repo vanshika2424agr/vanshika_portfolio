@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './About.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { personal } from '../../data';
+import profileImage from "../../../dist/Vanshika Agrawal(1)(2).jpeg";
 
 export default function About() {
   const leftRef  = useScrollReveal(0.15);
@@ -15,16 +16,26 @@ export default function About() {
           {/* Left: Avatar card */}
           <div ref={leftRef} className="reveal">
             <div className={styles.avatarCard}>
-              <div className={styles.avatarInner}>
-                <div className={styles.avatarInitials}>VA</div>
-                <div className={styles.avatarName}>Vanshika Agrawal</div>
-                <div className={styles.avatarTitle}>Backend Developer · AI Engineer</div>
+             <div className={styles.avatarInner}>
 
-                {/* Terminal-style quick facts */}
-                <div className={styles.termCard}>
+  <div className={styles.avatarName}>
+    Vanshika Agrawal
+  </div>
+
+  <div className={styles.avatarTitle}>
+    Backend Developer · AI Engineer
+  </div>
+
+  <img
+    src={profileImage}
+    alt="Vanshika Agrawal"
+    className={styles.profileImage}
+  />
+
+  <div className={styles.termCard}>
                   <div className={styles.factLine}>
                     <span className={styles.factPrompt}>$</span>
-                    <span>B.Tech CSE · UCER · 2026</span>
+                    <span>B.Tech CSE · UCER · 2028</span>
                   </div>
                   <div className={styles.factLine}>
                     <span className={styles.factPrompt}>$</span>

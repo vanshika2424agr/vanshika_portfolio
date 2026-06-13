@@ -18,7 +18,7 @@ export default function Skills() {
     <section id="skills" className="section-wrapper section-alt">
       <div className="container">
         <div ref={headRef} className="reveal">
-          <p className="section-label">// 02_tech_stack</p>
+          {/* <p className="section-label">// 02_tech_stack</p> */}
           <h2 className="section-title">Skills & Technologies</h2>
           <p className="section-sub">What I reach for when I sit down to build.</p>
         </div>
