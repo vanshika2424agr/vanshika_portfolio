@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './About.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { personal } from '../../data';
-import profileImage from "../../assets/vanshika.jpg";
+import profileImage from "../../assets/vanshika.jpeg";
 
 export default function About() {
   const leftRef  = useScrollReveal(0.15);
