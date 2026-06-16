@@ -218,7 +218,7 @@ badgeColor: "violet",
     tagline: "This website. Designed and coded from scratch.",
     description: "Built with React + Vite, dark techy aesthetic. Every animation and layout decision coded by hand.",
     tech: ["React", "Vite", "CSS Modules", "JavaScript"],
-    github: "https://github.com/vanshika2424agr/vanshika_portfolio", live: "https://vanshika-portfolio-nqbh.onrender.com", badge: "Full Stack", badgeColor: "emerald",
+    github: "https://github.com/vanshika2424agr/vanshika_portfolio", live: "https://vanshika-portfolio-1x8a.onrender.com", badge: "Full Stack", badgeColor: "emerald",
   },
 ];
 
