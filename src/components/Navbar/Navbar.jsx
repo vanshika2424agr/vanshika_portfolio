@@ -71,8 +71,6 @@ export default function Navbar() {
       <a href="#hero" className={styles.skipLink}>
         Skip to main content
       </a>
-
-      {/* ── Main navbar ── */}
       <nav
         className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
         role="navigation"

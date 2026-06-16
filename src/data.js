@@ -141,14 +141,28 @@ export const experiences = [
 
 // ---------- PROJECTS ----------
 export const projects = [
-  {
-    id: 1, featured: true,
-    name: "KidShield AI",
-    tagline: "AI-powered child safety platform — because some problems are worth building for.",
-    description: "An intelligent content moderation platform designed to detect and flag harmful digital content targeting children. Uses a Node.js/Express backend with Generative AI APIs for contextual content analysis that rule-based filters can't match.",
-    tech: ["Node.js", "Express.js", "MongoDB", "Generative AI API", "REST API"],
-    github: "#", live: null, badge: "Featured", badgeColor: "amber",
-  },
+{
+  id: 1,
+  featured: true,
+  name: "Rise Above AI",
+  tagline: "AI-powered emotional wellness and peer support ecosystem.",
+  description:
+    "Built a full-stack AI-powered platform that helps individuals cope with body shaming, bullying, and self-esteem challenges through personalized AI guidance, mood journaling, supportive communities, real-life success stories, and intelligent user matching. Integrated Generative AI for empathetic conversations and positive self-improvement recommendations, creating a safe space focused on growth, confidence, and emotional well-being.",
+  tech: [
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "FastAPI",
+    "Python",
+    "Generative AI",
+    "Socket.io"
+  ],
+  github: "#",
+  live: null,
+  badge: "Featured",
+  badgeColor: "amber",
+},
   {
     id: 2, featured: false,
     name: "Notes API",
@@ -158,16 +172,45 @@ export const projects = [
     github: "https://github.com/vanshika2424agr/notes-api", live: null, badge: "Backend", badgeColor: "cyan",
   },
   {
+    id: 2, featured: false,
+    name: "Authentication API",
+    tagline: "A beginner-friendly REST API built with Node.js, Express, MongoDB, and JWT Authentication.",
+    description: "A fully functional RESTful Notes API with complete CRUD operations, clean MVC architecture, proper error handling, and input validation.",
+    tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "MVC"],
+    github: "https://github.com/vanshika2424agr/authentication-api", live: null, badge: "Backend", badgeColor: "cyan",
+  },
+  {
     id: 3, featured: false,
     name: "Pdf-Merger",
   tagline: "Effortless PDF merging with a smooth user experience.",
 description:
-  "A full-stack PDF merger application that enables users to upload and combine multiple PDF files into one document. Built with efficient file processing, responsive UI, and secure handling of user data.",
+  "A full-stack PDF merger application that enables users to upload and combine two PDF files into one document. Built with efficient file processing, responsive UI, and secure handling of user data.",
 tech: ["React", "Node.js", "Express", "PDF-Lib"],
 github: "https://github.com/vanshika2424agr/pdf_merger",
-live: "#",
+live: "https://merge-pdf-jr93.onrender.com",
 badge: "Full Stack",
 badgeColor: "violet",
+  },
+{
+  id: 4,
+  featured: false,
+  name: "Fake News Detector",
+  tagline: "AI-powered  fake news detection using NLP and Machine Learning.",
+  description:
+    "A full-stack AI application that detects whether news content is real or fake. Built using Natural Language Processing (NLP), TF-IDF vectorization, Logistic Regression, GPT-2, and an interactive Gradio interface. The model achieves 99.08% accuracy on the Fake and Real News Dataset.",
+  tech: [
+    "Python",
+    "Scikit-Learn",
+    "NLP",
+    "TF-IDF",
+    "Logistic Regression",
+    "GPT-2",
+    "Gradio"
+  ],
+  github: "https://github.com/vanshika2424agr/FAKE-NEWS-DETECTOR",
+  live: "https://fake-news-dtector-and-generator.onrender.com",
+  badge: "AI/ML",
+  badgeColor: "violet"
   },
   {
     id: 4, featured: false,
@@ -175,7 +218,7 @@ badgeColor: "violet",
     tagline: "This website. Designed and coded from scratch.",
     description: "Built with React + Vite, dark techy aesthetic. Every animation and layout decision coded by hand.",
     tech: ["React", "Vite", "CSS Modules", "JavaScript"],
-    github: "#", live: "#", badge: "Full Stack", badgeColor: "emerald",
+    github: "https://github.com/vanshika2424agr/vanshika_portfolio", live: "https://vanshika-portfolio-nqbh.onrender.com", badge: "Full Stack", badgeColor: "emerald",
   },
 ];
 

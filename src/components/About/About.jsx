@@ -13,7 +13,6 @@ export default function About() {
       <div className="container">
         <div className={styles.grid}>
 
-          {/* Left: Avatar card */}
           <div ref={leftRef} className="reveal">
             <div className={styles.avatarCard}>
              <div className={styles.avatarInner}>
